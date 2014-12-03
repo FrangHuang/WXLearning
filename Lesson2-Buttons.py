@@ -8,8 +8,12 @@ import wx
 
 
 #This function is an event handler. It will run when a certain even occurs.
-def OnClickMe(e):
-	print "Yay! You clicked it."
+
+def OnClickMe1(e):
+	print "Hey! You shouldn't click it."
+	
+def OnClickMe2(e):
+	print "Well done! You click it."
 
 #----Main Program Below-----
 
@@ -24,10 +28,12 @@ frame = wx.Frame(None, wx.ID_ANY, "Josh's Title")
 panel = wx.Panel(frame)
 
 #Create a button, and put it in my panel
-btnClickMe = wx.Button(panel, label="Click Me", pos=(20,20), size=(200,20))
+btnClickMe1 = wx.Button(panel, label="Don't Click Me", pos=(100, 100), size=(200, 20))
+btnClickMe2 = wx.Button(panel, label="Click Me", pos=(100, 140), size=(200, 20))
 
 #Make the button do something!
-#btnClickMe.Bind(wx.EVT_BUTTON, OnClickMe)
+btnClickMe1.Bind(wx.EVT_BUTTON, OnClickMe1)
+btnClickMe2.Bind(wx.EVT_BUTTON, OnClickMe2)
 
 #Show the frame
 frame.Show()
