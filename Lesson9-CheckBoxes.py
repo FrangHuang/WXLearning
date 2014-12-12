@@ -8,9 +8,9 @@ class CheckBoxFrame(wx.Frame):
 
 	def __init__(self, parent):
 
-		
-		
-		wx.Frame.__init__(self, parent, wx.ID_ANY, "Let's learn about checkboxes.")
+	
+		self.title = "Let's learn about checkboxes."
+		wx.Frame.__init__(self, parent, wx.ID_ANY)
 		
 		self.panel = wx.Panel(self)
 
@@ -19,7 +19,7 @@ class CheckBoxFrame(wx.Frame):
 		self.cbShowTitle = wx.CheckBox(self.panel, label='Show title', pos=(20, 20))
         
 		# By default our box will be checked. I bet you can guess how to change that.
-		self.cbShowTitle.SetValue(True)
+		self.cbShowTitle.SetValue(False)
 
 		# We will bind out checkbox to an event handler.
 		# Before we have only bound buttons and EVT_BUTTON.
@@ -31,7 +31,7 @@ class CheckBoxFrame(wx.Frame):
 		# Calling the Centre() method (note the British spelling) on a frame
 		# automatically places it in the centre of your window.
 		self.Centre()
-   
+   		self.response = wx.StaticText(self.panel, label="", pos=(130, 65))
 	# Here is the event handler for whenever the checkbox is checked or unchecked.
 	# What is that 'e' again? What does it do?
 	def OnToggleShowTitle(self, e):
@@ -41,9 +41,12 @@ class CheckBoxFrame(wx.Frame):
 		isChecked = self.cbShowTitle.GetValue()
 		
 		if isChecked:
-			self.SetTitle("Let's learn about checkboxes.")            
+			self.SetTitle(self.title) 
+			self.response.SetLabel("The box is checked.")
 		else: 
-			self.SetTitle('')  
+			self.SetTitle("")  
+			self.response.SetLabel("The box is not checked.")
+
 
 
 # ----------- Main Program Below -----------------
@@ -69,7 +72,7 @@ app.MainLoop()
 
 #1. What is the purpose of the 'e' in line 37?
 #   Write you answer below. Writing helps clearly identify answers.
-
+#   User click the button, what they didThe box is checked.
 #2. Change the default value of the check box so it is unchecked when the program starts.
 #   Is there anything else you need to change so the program is consistent?
 
